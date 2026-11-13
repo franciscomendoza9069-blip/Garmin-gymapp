@@ -74,6 +74,14 @@ manifest.xml            Dispositivo y permisos
 monkey.jungle           Configuracion del proyecto
 ```
 
+## Apoya GymApp / Support GymApp
+
+Si GymApp te resulta util, puedes apoyar su desarrollo con una aportacion voluntaria. Gracias por ayudar a mejorar el proyecto.
+
+If you find GymApp useful, you can support its development with a voluntary contribution. Thank you for helping improve the project.
+
+**[Apoyar con PayPal / Support via PayPal](https://paypal.me/gymapp)**
+
 ## Comentarios y condiciones de uso
 
 Puedes abrir un issue con el modelo de reloj, los pasos y el resultado esperado. No publiques claves privadas, archivos FIT personales ni capturas con datos de salud. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y [SECURITY.md](SECURITY.md).
