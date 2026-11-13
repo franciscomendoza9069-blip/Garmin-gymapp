@@ -7,3 +7,5 @@ Para informar de un fallo, abre un issue con los pasos, el resultado esperado, l
 Antes de proponer una funcion grande, abre un issue para hablar del alcance. La licencia de reutilizacion aun no esta definida; por ahora se solicitan comentarios y reportes, no contribuciones de codigo.
 
 Nunca adjuntes tu clave de firma, contrasenas, exportaciones de otras aplicaciones ni archivos FIT personales.
+
+ayúdame a seguir desarrollando proyectos como este: https://paypal.me/gymapp
