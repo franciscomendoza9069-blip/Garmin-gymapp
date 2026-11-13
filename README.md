@@ -4,6 +4,18 @@ Un asistente de gimnasio en el reloj: elige tu rutina, completa las series y con
 
 Proyecto en desarrollo escrito en Monkey C para Garmin Connect IQ. La interfaz esta en espanol y el unico dispositivo configurado es el **Forerunner 55 (`fr55`, 208 x 208, API minima 3.4.0)**.
 
+## Descargar e instalar / Download and install
+
+**[Descargar GymApp para Forerunner 55 / Download for Forerunner 55](https://github.com/franciscomendoza9069-blip/Garmin-gymapp/releases/tag/v0.1.0-alpha.1)**
+
+En la seccion Assets de esa pagina descarga `GymApp-fr55-v0.1.0-alpha.1.zip`, extraelo y copia `GymApp.prg` a `GARMIN/APPS` del reloj conectado por USB. Expulsa el reloj de forma segura y abre la app. No necesitas descargar el codigo ni instalar herramientas de programacion.
+
+Download the ZIP from the release Assets, extract it and copy `GymApp.prg` into `GARMIN/APPS` on your USB-connected watch. Safely eject the watch and open the app. No compiler is needed.
+
+Puedes descargar, instalar y utilizar esta version gratuitamente para uso personal. Las aportaciones son voluntarias. Es una version **experimental**, compilada para fr55, sin validacion completa de esta compilacion en reloj ni de su sincronizacion FIT. Revisa las limitaciones de abajo antes de probarla.
+
+Free for personal use; contributions are optional. This is an **experimental** build for fr55. Full on-watch testing and FIT synchronization validation remain pending. See [the application use terms](APP-LICENSE.md).
+
 ## Que incluye
 
 - Cinco rutinas de ejemplo, con seis ejercicios por dia, 3 series de 10 repeticiones y 3 minutos de descanso.
@@ -86,4 +98,4 @@ If you find GymApp useful, you can support its development with a voluntary cont
 
 Puedes abrir un issue con el modelo de reloj, los pasos y el resultado esperado. No publiques claves privadas, archivos FIT personales ni capturas con datos de salud. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y [SECURITY.md](SECURITY.md).
 
-No se concede por ahora una licencia de reutilizacion o distribucion del codigo; los derechos quedan reservados mientras se decide el modelo del proyecto. Que el repositorio sea visible no lo convierte en software de codigo abierto. Garmin y Forerunner son marcas de sus respectivos titulares; este proyecto es independiente.
+Se permite descargar, instalar y utilizar el ejecutable publicado para uso personal gratuito conforme a [APP-LICENSE.md](APP-LICENSE.md). Este permiso no concede permiso general de reutilizacion, modificacion o redistribucion del codigo fuente ni de redistribucion del ejecutable. Los demas derechos quedan reservados. Que el repositorio sea visible no lo convierte en software de codigo abierto. Garmin y Forerunner son marcas de sus respectivos titulares; este proyecto es independiente.
