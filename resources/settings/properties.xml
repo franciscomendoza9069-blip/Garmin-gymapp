@@ -1,0 +1,13 @@
+<properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <!--
+        Este texto se puede cambiar desde Garmin Connect IQ / Garmin Connect.
+
+        Formato general:
+        Rutina|Ejercicio;series;reps;pesoKg;descansoSeg;subidaKg|Ejercicio...#Otra rutina|...
+
+        Ejemplo de ejercicio:
+        Press banca;3;10;40;180;2.5
+    -->
+    <property id="routine_text" type="string">Lunes Push|Press incl manc;3;10;0;180;2.5|Cruce polea bajo;3;10;0;180;2.5|Elev laterales;3;10;0;180;2.5|Press militar;3;10;0;180;2.5|Triceps polea;3;10;0;180;2.5|Fondos maquina;3;10;0;180;2.5#Martes Pull|Remo barra;3;10;0;180;2.5|Jalon pecho;3;10;0;180;2.5|Pajaro manc;3;10;0;180;2.5|Facepull polea;3;10;0;180;2.5|Curl barra;3;10;0;180;2.5|Curl martillo;3;10;0;180;2.5#Mierc Pierna|Extension quad;3;10;0;180;2.5|Hack o prensa;3;10;0;180;2.5|Curl femoral;3;10;0;180;2.5|Peso muerto rum;3;10;0;180;2.5|Aductores maq;3;10;0;180;2.5|Gemelos de pie;3;10;0;180;2.5#Jueves Push B|Press banca;3;10;0;180;2.5|Peck deck;3;10;0;180;2.5|Laterales polea;3;10;0;180;2.5|Landmine uni;3;10;0;180;2.5|Press frances Z;3;10;0;180;2.5|Triceps nuca;3;10;0;180;2.5#Viernes Full|Sentadilla barra;3;10;0;180;2.5|Bulgara manc;3;10;0;180;2.5|Peso muerto;3;10;0;180;2.5|Remo Gironda;3;10;0;180;2.5|Aductores maq;3;10;0;180;2.5|Gemelos sentado;3;10;0;180;2.5</property>
+    <property id="progression_mode" type="number">0</property>
+</properties>

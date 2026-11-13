@@ -1,0 +1,11 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <fitContributions>
+        <fitField id="0" displayInActivitySummary="true" sortOrder="0" precision="1" dataLabel="@Strings.FitTotalWeight" unitLabel="@Strings.FitKg" />
+        <fitField id="1" displayInActivitySummary="true" sortOrder="1" precision="0" dataLabel="@Strings.FitSets" unitLabel="@Strings.FitSetsUnit" />
+        <fitField id="2" displayInActivitySummary="true" sortOrder="2" precision="0" dataLabel="@Strings.FitReps" unitLabel="@Strings.FitRepsUnit" />
+        <fitField id="3" displayInActivitySummary="true" sortOrder="3" precision="1" dataLabel="@Strings.FitEffortAvg" unitLabel="@Strings.FitEffortUnit" />
+        <fitField id="4" displayInActivitySummary="true" sortOrder="4" precision="1" dataLabel="@Strings.FitRepsAvg" unitLabel="@Strings.FitRepsUnit" />
+        <fitField id="5" displayInActivitySummary="true" sortOrder="5" precision="0" dataLabel="@Strings.FitCurrentExercise" unitLabel="@Strings.FitExerciseUnit" />
+        <fitField id="6" displayInActivitySummary="true" sortOrder="6" precision="1" dataLabel="@Strings.FitSessionVolume" unitLabel="@Strings.FitKg" />
+    </fitContributions>
+</resources>

@@ -1,0 +1,35 @@
+# Claves de firma y configuracion privada
+*.der
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+local.*
+.vscode/settings.json
+
+# Compilacion y datos generados
+bin/
+build/
+*.prg
+*.iq
+*.fit
+*.debug.xml
+*.log
+graphify-out/
+
+# Instaladores, copias de otras webs y archivos comprimidos
+*.exe
+*.dll
+*.zip
+*.7z
+*.rar
+*.wpress
+*.WordPress.*.xml
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

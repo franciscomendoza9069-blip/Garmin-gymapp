@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <!--
+        Proyecto personal para Garmin Forerunner 55.
+        La referencia oficial de Garmin lista el id del dispositivo como "fr55":
+        https://developer.garmin.com/connect-iq/device-reference/fr55/
+    -->
+    <iq:application
+        id="A4F3B8C72C5E4A698E923A4775D9F055"
+        type="watch-app"
+        name="@Strings.AppName"
+        entry="GymAppApp"
+        launcherIcon="@Drawables.LauncherIcon"
+        minSdkVersion="3.4.0">
+        <iq:products>
+            <iq:product id="fr55"/>
+        </iq:products>
+        <iq:permissions>
+            <iq:uses-permission id="Fit"/>
+            <iq:uses-permission id="FitContributor"/>
+        </iq:permissions>
+        <iq:languages>
+            <iq:language>spa</iq:language>
+        </iq:languages>
+    </iq:application>
+</iq:manifest>

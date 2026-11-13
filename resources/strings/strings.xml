@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<strings>
+    <string id="AppName">Gym Routine</string>
+    <string id="RoutineTextTitle">Rutina en texto</string>
+    <string id="RoutineTextPrompt">Formato: Rutina|Ejercicio;series;reps;peso;descanso;subida</string>
+    <string id="ProgressionModeTitle">Progresion</string>
+    <string id="ProgressionWeekly">Semanal</string>
+    <string id="ProgressionMonthly">Mensual</string>
+    <string id="FitTotalWeight">Peso total</string>
+    <string id="FitSets">Series</string>
+    <string id="FitReps">Reps</string>
+    <string id="FitEffortAvg">Esfuerzo medio</string>
+    <string id="FitRepsAvg">Rep media</string>
+    <string id="FitCurrentExercise">Ejercicio actual</string>
+    <string id="FitSessionVolume">Volumen sesion</string>
+    <string id="FitKg">kg</string>
+    <string id="FitSetsUnit">sets</string>
+    <string id="FitRepsUnit">reps</string>
+    <string id="FitEffortUnit">1-5</string>
+    <string id="FitExerciseUnit">txt</string>
+</strings>

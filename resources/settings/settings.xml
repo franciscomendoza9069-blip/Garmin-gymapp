@@ -1,0 +1,12 @@
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <setting propertyKey="@Properties.routine_text" title="@Strings.RoutineTextTitle" prompt="@Strings.RoutineTextPrompt">
+        <settingConfig type="alphaNumeric" maxLength="3500"/>
+    </setting>
+
+    <setting propertyKey="@Properties.progression_mode" title="@Strings.ProgressionModeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ProgressionWeekly</listEntry>
+            <listEntry value="1">@Strings.ProgressionMonthly</listEntry>
+        </settingConfig>
+    </setting>
+</settings>

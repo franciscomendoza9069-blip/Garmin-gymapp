@@ -1,0 +1,9 @@
+project.manifest = manifest.xml
+
+# Compila solo el codigo comun. Como el proyecto apunta unicamente al fr55,
+# no necesitamos variantes por dispositivo.
+base.sourcePath = source
+base.resourcePath = resources
+
+# La carpeta resources-round-208x208 se deja creada como referencia,
+# pero no se declara aqui porque la app no necesita recursos especificos.
