@@ -1,26 +1,25 @@
-# Publicar esta copia en GitHub
+# Mantener la publicacion de GymApp
 
-Esta carpeta es un repositorio independiente preparado para publicar. No esta conectado a ninguna cuenta ni se ha subido nada. Tampoco se ha creado un commit con una identidad inventada: usa tu propia cuenta al publicarlo.
+Repositorio publico: https://github.com/franciscomendoza9069-blip/Garmin-gymapp
 
-## Desde VS Code
+La copia de trabajo debe ser un repositorio independiente. No publiques la carpeta personal original ni su carpeta superior, que contienen otros proyectos y archivos privados.
 
-1. Abre **esta carpeta limpia**, no el proyecto original ni su carpeta superior.
-2. En Control de codigo fuente, revisa los archivos y crea el primer commit con el mensaje `Preparar prototipo GymApp para GitHub`.
-3. Si Git pide tu identidad, configura tu nombre y el correo privado de GitHub que aparece en los ajustes de tu cuenta, o el correo que decidas hacer publico.
-4. Pulsa **Publicar en GitHub** e inicia sesion. Usa el nombre `gymapp` o `gymapp-garmin`.
-5. Elige privado si quieres revisar primero; elige publico cuando quieras mostrar el codigo.
-6. Comprueba en GitHub que aparecen README, source y resources, y que no aparece ninguna clave privada ni archivo de otra web.
+## Actualizar el codigo
 
-Descripcion sugerida:
+1. Revisa los cambios en Control de codigo fuente de VS Code y confirma que solo incluyen codigo, recursos y documentacion del proyecto.
+2. Ejecuta las comprobaciones apropiadas: compilacion para fr55 y pruebas del simulador cuando cambie la app.
+3. Crea un commit con tu propia cuenta y subelo al repositorio.
+4. Comprueba en GitHub que el README describe el comportamiento real y distingue las pruebas del simulador de las realizadas en reloj.
 
-> Asistente de gimnasio para Garmin Forerunner 55: rutinas, series, descansos con vibracion y esfuerzo por ejercicio. Prototipo en Monkey C.
+## Publicar una descarga instalable
 
-Temas sugeridos: `garmin`, `connect-iq`, `monkey-c`, `forerunner-55`, `fitness`, `strength-training`.
+1. Compila con tu clave privada guardada fuera del repositorio.
+2. Prepara un ZIP que contenga unicamente `GymApp.prg`, `INSTALL.md` y `APP-LICENSE.md`.
+3. Calcula el SHA-256 del ZIP y crea un archivo `.sha256` con el hash y el nombre del ZIP.
+4. Crea una release asociada al commit correcto, sube ambos archivos y marcala como pre-release mientras sea experimental.
+5. Actualiza en el README el enlace de descarga, el nombre del ZIP y las referencias del prompt de instalacion asistida por IA.
+6. Comprueba que la descarga publica coincide con el ZIP local. No sustituyas silenciosamente los archivos de una version anterior.
 
-No elijas una licencia permisiva automaticamente: todavia no se ha decidido si se permite reutilizar y redistribuir el codigo. Puedes mantener el repositorio privado hasta decidirlo. No anuncies una version estable ni compatibilidad con otros dispositivos.
+Nunca publiques `developer_key.der`, archivos FIT personales, respaldos del reloj, instaladores o exportaciones de otras webs. El `.gitignore` protege el flujo normal de Git, pero no los archivos que se adjuntan manualmente en una release.
 
-## Sobre el ZIP limpio
-
-El ZIP de entrega contiene solo los archivos previstos para el repositorio, sin `.git`, claves ni binarios de compilacion. Si lo extraes en otra carpeta, tendras que inicializar alli el repositorio al publicarlo. Es preferible usar la carpeta limpia ya preparada.
-
-El `.gitignore` protege el flujo normal de Git, pero no filtra archivos arrastrados manualmente a la web de GitHub. No subas la carpeta original por ese metodo.
+No anuncies la version como estable ni compatible con otros modelos. La app sigue limitada al Forerunner 55 y los campos por ejercicio no rellenan la tabla nativa «Ejercicios» de Garmin Connect.

@@ -1,6 +1,7 @@
 using Toybox.Application.Properties;
 using Toybox.Application.Storage;
 using Toybox.Attention;
+using Toybox.System;
 
 // Toda la logica del entrenamiento vive aqui.
 // La vista solo pregunta "en que estado estamos" y dibuja segun la respuesta.
@@ -36,6 +37,7 @@ class WorkoutStateMachine {
     private var _pendingEffort;
     private var _lastProgressText;
     private var _recordingSaved;
+    private var _exerciseResults;
 
     function initialize(routines) {
         _routines = routines;
@@ -130,7 +132,11 @@ class WorkoutStateMachine {
             return "FIT guardado";
         }
 
-        return "Resumen local";
+        return "FIT no guardado";
+    }
+
+    function canRetrySave() {
+        return !_recordingSaved && _recorder.hasSession();
     }
 
     function handleSelect() {
@@ -145,7 +151,11 @@ class WorkoutStateMachine {
         } else if (_state == WORKOUT_STATE_EFFORT) {
             confirmEffort();
         } else if (_state == WORKOUT_STATE_FINISHED) {
-            resetToMenu();
+            if (canRetrySave()) {
+                saveRecording();
+            } else {
+                resetToMenu();
+            }
         }
     }
 
@@ -163,7 +173,10 @@ class WorkoutStateMachine {
         } else if (_state == WORKOUT_STATE_NEXT_EXERCISE) {
             enterActive();
         } else if (_state == WORKOUT_STATE_FINISHED) {
-            resetToMenu();
+            // Si queda un FIT pendiente, no perderlo al volver al menu.
+            if (!canRetrySave()) {
+                resetToMenu();
+            }
         }
     }
 
@@ -236,6 +249,9 @@ class WorkoutStateMachine {
         _exerciseIndex = 0;
         _setIndex = 1;
         resetSessionStats();
+        for (var i = 0; i < _routine.exercises.size(); i++) {
+            _exerciseResults.add(new ExerciseSessionResult(_routine.exercises[i], getWeightForExercise(i)));
+        }
         _recorder.start(_routine.name);
         updateFitSummary();
         enterActive();
@@ -250,6 +266,7 @@ class WorkoutStateMachine {
         _pendingEffort = 3;
         _lastProgressText = "";
         _recordingSaved = false;
+        _exerciseResults = [];
     }
 
     private function enterActive() {
@@ -290,6 +307,7 @@ class WorkoutStateMachine {
     private function confirmEffort() {
         _effortSum += _pendingEffort;
         _effortCount++;
+        _exerciseResults[_exerciseIndex].effort = _pendingEffort;
 
         applyProgression();
         updateFitSummary();
@@ -307,14 +325,44 @@ class WorkoutStateMachine {
 
     private function finishRoutine() {
         _state = WORKOUT_STATE_FINISHED;
-        saveLastSummary();
-        _recorder.stopAndSave(_totalWeightTenths, _setsDone, _repsDone, _effortSum, _effortCount, getCurrentExercise().name);
-        _recordingSaved = true;
+        // El resumen local y la actividad FIT son independientes.
+        try {
+            saveLastSummary();
+        } catch (error) {
+            System.println("GymApp: local summary: " + error.getErrorMessage());
+        }
+        saveRecording();
 
         if (!_finishVibrated) {
             _finishVibrated = true;
             Attention.vibrate(VibePatterns.routineDone());
         }
+    }
+
+    private function saveRecording() {
+        if (!_recordingSaved) {
+            _recordingSaved = _recorder.stopAndSave(_totalWeightTenths, _setsDone, _repsDone, _effortSum, _effortCount, getCurrentExercise().name);
+        }
+    }
+
+    // AppBase.onStop tambien se llama cuando el usuario sale con BACK 4s.
+    // Guardamos sesiones parciales con series; las sesiones vacias se descartan.
+    function onExit() {
+        if (_setsDone > 0) {
+            try {
+                saveLastSummary();
+            } catch (error) {
+                System.println("GymApp: partial local summary: " + error.getErrorMessage());
+            }
+            saveRecording();
+        } else {
+            _recorder.discard();
+        }
+    }
+
+    (:testSupport)
+    function useTestRecorder(recorder) {
+        _recorder = recorder;
     }
 
     private function addCompletedSet() {
@@ -324,6 +372,7 @@ class WorkoutStateMachine {
         _setsDone++;
         _repsDone += exercise.reps;
         _totalWeightTenths += weightTenths * exercise.reps;
+        _exerciseResults[_exerciseIndex].setsDone++;
         updateFitSummary();
     }
 
@@ -338,6 +387,9 @@ class WorkoutStateMachine {
         _setsDone--;
         _repsDone -= exercise.reps;
         _totalWeightTenths -= weightTenths * exercise.reps;
+        if (_exerciseResults[_exerciseIndex].setsDone > 0) {
+            _exerciseResults[_exerciseIndex].setsDone--;
+        }
 
         if (_repsDone < 0) {
             _repsDone = 0;
@@ -352,7 +404,9 @@ class WorkoutStateMachine {
 
     private function goBackOneSet() {
         if (_exerciseIndex == 0 && _setIndex == 1) {
-            resetToMenu();
+            if (_recorder.discard()) {
+                resetToMenu();
+            }
             return;
         }
 
@@ -394,12 +448,19 @@ class WorkoutStateMachine {
     }
 
     private function getCurrentWeightTenths() {
-        var storedWeight = Storage.getValue(weightStorageKey());
+        if (_exerciseResults.size() > _exerciseIndex) {
+            return _exerciseResults[_exerciseIndex].weightTenths;
+        }
+        return getWeightForExercise(_exerciseIndex);
+    }
+
+    private function getWeightForExercise(index) {
+        var storedWeight = Storage.getValue("w" + _routineIndex + "_" + index);
         if (storedWeight instanceof Number) {
             return storedWeight;
         }
 
-        return getCurrentExercise().weightTenths;
+        return _routine.exercises[index].weightTenths;
     }
 
     private function getMonthlySuccessCount() {
@@ -421,6 +482,7 @@ class WorkoutStateMachine {
     }
 
     private function updateFitSummary() {
+        _recorder.updateExerciseDetails(_exerciseResults);
         _recorder.update(_totalWeightTenths, _setsDone, _repsDone, _effortSum, _effortCount, getCurrentExercise().name);
     }
 
@@ -430,6 +492,24 @@ class WorkoutStateMachine {
         Storage.setValue("last_reps", _repsDone);
         Storage.setValue("last_effort_sum", _effortSum);
         Storage.setValue("last_effort_count", _effortCount);
+        var rows = [];
+        for (var i = 0; i < _exerciseResults.size(); i++) {
+            if (_exerciseResults[i].setsDone > 0) {
+                rows.add(_exerciseResults[i].toStoredArray());
+            }
+        }
+        Storage.setValue("last_routine", _routine.name);
+        Storage.setValue("last_exercises", rows);
+    }
+
+    (:testSupport)
+    function getTestExerciseResults() {
+        return _exerciseResults;
+    }
+
+    (:testSupport)
+    function getTestRecorder() {
+        return _recorder;
     }
 
     private function weightStorageKey() {

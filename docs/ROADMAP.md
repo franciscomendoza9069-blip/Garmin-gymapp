@@ -1,12 +1,14 @@
 # Pendientes antes de una beta publica
 
-- [ ] Probar el flujo completo en simulador y Forerunner 55 con el codigo de este repositorio.
-- [ ] Definir guardado o descarte al salir de un entrenamiento incompleto y liberar la sesion FIT.
-- [ ] Confirmar guardado FIT real y sincronizacion de campos personalizados con Garmin Connect.
-- [ ] Corregir el mensaje de guardado para que refleje el resultado real.
+- [x] Suite del simulador: flujo de entrenamiento, grabacion FIT y errores de guardado.
+- [x] Guardado de actividad y sincronizacion basica confirmados por el usuario en Forerunner 55.
+- [x] Implementar guardado parcial al salir y descarte de sesiones vacias; probado en simulador.
+- [ ] Completar la validacion de salida parcial en reloj real.
+- [ ] Confirmar la presentacion de los campos personalizados por ejercicio en Garmin Connect.
+- [x] Mostrar el resultado real del guardado y permitir reintentos.
 - [ ] Identificar ejercicios de forma estable al editar y reordenar rutinas.
 - [ ] Validar limites de entrada y gestionar errores de grabacion y almacenamiento.
-- [ ] Revisar nombres largos y margenes de la pantalla redonda.
+- [x] Ajustar nombres y margenes de la pantalla redonda; legibilidad confirmada por el usuario.
 - [ ] Revisar precision de los descansos si la vista se oculta o retrasa.
 - [ ] Aclarar los nombres de los modos de progresion o implementar calendario real.
 - [ ] Revisar retroceso entre ejercicios y coherencia de los totales al deshacer series.

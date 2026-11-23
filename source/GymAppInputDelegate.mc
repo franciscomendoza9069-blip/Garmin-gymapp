@@ -91,7 +91,8 @@ class GymAppInputDelegate extends WatchUi.InputDelegate {
         _backTimer.stop();
     }
 
-    private function exitIfBackStillHeld() {
+    // El callback debe ser publico: el temporizador lo invoca desde la API nativa.
+    function exitIfBackStillHeld() {
         if (_backHeld) {
             _backExitDone = true;
             System.exit();

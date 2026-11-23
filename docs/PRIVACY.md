@@ -1,6 +1,6 @@
 # Datos tratados por el prototipo
 
-El codigo no incluye servidor propio, anuncios, analitica ni peticiones de red. Guarda en el reloj pesos, contadores de progresion, esfuerzo y el ultimo resumen. Las rutinas tambien pueden proceder de los ajustes de la app.
+El codigo no incluye servidor propio, anuncios, analitica ni peticiones de red. Guarda en el reloj pesos, contadores de progresion, esfuerzo, el ultimo resumen y los ejercicios del ultimo entrenamiento (nombre, series completadas, reps objetivo, peso y esfuerzo). Las rutinas tambien pueden proceder de los ajustes de la app.
 
 La grabacion de actividad utiliza las APIs de Garmin. Si se guarda y sincroniza, el archivo FIT y sus campos personalizados pasan a Garmin Connect mediante los servicios de Garmin y las preferencias del usuario. El autor del repositorio no recibe esos datos mediante este codigo.
 

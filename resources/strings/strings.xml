@@ -18,4 +18,13 @@
     <string id="FitRepsUnit">reps</string>
     <string id="FitEffortUnit">1-5</string>
     <string id="FitExerciseUnit">txt</string>
+    <string id="FitExercise1">GymApp - Ejercicio 1</string>
+    <string id="FitExercise2">GymApp - Ejercicio 2</string>
+    <string id="FitExercise3">GymApp - Ejercicio 3</string>
+    <string id="FitExercise4">GymApp - Ejercicio 4</string>
+    <string id="FitExercise5">GymApp - Ejercicio 5</string>
+    <string id="FitExercise6">GymApp - Ejercicio 6</string>
+    <string id="FitExtraExercises">GymApp - Ejercicios adicionales</string>
+    <string id="FitNoUnit"></string>
+    <string id="FitExerciseCountUnit">ejercicios</string>
 </strings>

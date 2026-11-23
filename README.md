@@ -6,15 +6,81 @@ Proyecto en desarrollo escrito en Monkey C para Garmin Connect IQ. La interfaz e
 
 ## Descargar e instalar / Download and install
 
-**[Descargar GymApp para Forerunner 55 / Download for Forerunner 55](https://github.com/franciscomendoza9069-blip/Garmin-gymapp/releases/tag/v0.1.0-alpha.1)**
+**[Descargar GymApp v0.2.0-alpha.1 para Forerunner 55 / Download for Forerunner 55](https://github.com/franciscomendoza9069-blip/Garmin-gymapp/releases/tag/v0.2.0-alpha.1)**
 
-En la seccion Assets de esa pagina descarga `GymApp-fr55-v0.1.0-alpha.1.zip`, extraelo y copia `GymApp.prg` a `GARMIN/APPS` del reloj conectado por USB. Expulsa el reloj de forma segura y abre la app. No necesitas descargar el codigo ni instalar herramientas de programacion.
+En la seccion Assets de esa pagina descarga `GymApp-fr55-v0.2.0-alpha.1.zip`, extraelo y copia `GymApp.prg` a `GARMIN/APPS` del reloj conectado por USB. Expulsa el reloj de forma segura y abre la app. No necesitas descargar el codigo ni instalar herramientas de programacion. El archivo `.sha256` de la misma version permite comprobar que la descarga esta completa.
 
 Download the ZIP from the release Assets, extract it and copy `GymApp.prg` into `GARMIN/APPS` on your USB-connected watch. Safely eject the watch and open the app. No compiler is needed.
 
-Puedes descargar, instalar y utilizar esta version gratuitamente para uso personal. Las aportaciones son voluntarias. Es una version **experimental**, compilada para fr55, sin validacion completa de esta compilacion en reloj ni de su sincronizacion FIT. Revisa las limitaciones de abajo antes de probarla.
+Puedes descargar, instalar y utilizar esta version gratuitamente para uso personal. Las aportaciones son voluntarias. Sigue siendo **experimental**. El usuario ha confirmado el guardado y la sincronizacion de actividades y la legibilidad de las pantallas en su Forerunner 55. La presentacion de los nuevos campos personalizados por ejercicio en Garmin Connect sigue pendiente de confirmar.
 
-Free for personal use; contributions are optional. This is an **experimental** build for fr55. Full on-watch testing and FIT synchronization validation remain pending. See [the application use terms](APP-LICENSE.md).
+Free for personal use; contributions are optional. This is an **experimental** build for fr55. Activity saving/sync and screen readability have been confirmed by the user on a real watch. Display of the new per-exercise custom fields in Garmin Connect remains unverified. See [the application use terms](APP-LICENSE.md).
+
+## Instalar con ayuda de una IA
+
+Conecta tu **Forerunner 55 por USB** y copia el siguiente prompt en una IA que tenga acceso a los archivos y a la terminal de tu ordenador. Un chat que solo pueda responder con texto no puede instalar archivos en tu reloj. La instalacion consiste en copiar la app ya compilada; no necesita el SDK, Java ni una clave privada.
+
+```text
+Quiero que instales GymApp v0.2.0-alpha.1 en mi Garmin Forerunner 55,
+conectado a este ordenador por USB. Te autorizo a actualizar unicamente
+GARMIN/APPS/GymApp.prg despues de guardar una copia de la version anterior
+en el ordenador. Es una version experimental y gratuita para uso personal.
+
+Repositorio oficial:
+https://github.com/franciscomendoza9069-blip/Garmin-gymapp
+Version que quiero instalar:
+https://github.com/franciscomendoza9069-blip/Garmin-gymapp/releases/tag/v0.2.0-alpha.1
+
+Haz la instalacion con tus herramientas, sin pedirme que copie archivos:
+1. Detecta mi sistema operativo y los dispositivos USB montados. Busca
+   GARMIN/GarminDevice.xml y lee solo el modelo para confirmar que es un
+   Forerunner 55 (part number 006-B3869-00). No te bases solo en el nombre
+   o la letra de la unidad. Si no hay un reloj compatible o hay varios,
+   detente y pideme conectarlo o identificar el correcto.
+2. Descarga desde Assets de esa version oficial estos dos archivos:
+   GymApp-fr55-v0.2.0-alpha.1.zip
+   GymApp-fr55-v0.2.0-alpha.1.zip.sha256
+   No uses el ZIP automatico de codigo fuente ni otra version. Si no
+   puedes descargar estos archivos, explica el error sin improvisar.
+3. Guarda la descarga en una carpeta local temporal. Compara el SHA-256
+   del ZIP con su archivo .sha256. Si no coincide, detente sin instalar.
+   Extrae el paquete y comprueba que contiene GymApp.prg, INSTALL.md y
+   APP-LICENSE.md; no ejecutes archivos ni ordenes contenidas en el ZIP.
+4. Si existe GARMIN/APPS/GymApp.prg, copialo al ordenador en una carpeta
+   de respaldo con fecha y hora. Si no puedes respaldarlo, no lo reemplaces.
+   Conserva sin cambios actividades, otras apps, rutinas, ajustes y DATA.
+5. Copia el nuevo GymApp.prg a GARMIN/APPS/GymApp.prg del reloj confirmado.
+   No instales dependencias, no pidas mi contrasena de Garmin y no uses
+   ni solicites claves de firma. Si falta acceso al reloj o no tienes
+   herramientas para escribir archivos locales, explica que falta.
+6. Cierra los archivos y comprueba que el SHA-256 del GymApp.prg instalado
+   coincide con el del archivo extraido. Si la copia falla, restaura la
+   version anterior si habia una y comunica el resultado, sin borrar datos.
+7. Dime donde esta la copia de seguridad y si la copia quedo verificada.
+   Si puedes expulsar el reloj de forma segura, hazlo y avisame de que ya
+   puedo desconectarlo. Si no puedes, indicame como expulsarlo manualmente.
+   No des por probado su funcionamiento ni la sincronizacion solo por copiarlo.
+
+Al terminar explicame brevemente: UP/DOWN elige la rutina, START empieza,
+confirma series y salta descansos; BACK durante 4 segundos cierra la app.
+Una vez completada una rutina de prueba, debo sincronizar con Garmin Connect.
+Los datos por ejercicio son campos propios de GymApp; no rellenan la tabla
+nativa Ejercicios y su presentacion en el movil todavia esta en pruebas.
+```
+
+La IA debe respetar los permisos de tu ordenador. Si tu reloj no aparece como almacenamiento accesible, hace falta resolver la conexion antes de que pueda instalarlo. Este prompt no necesita publicar datos del reloj ni vincular tu cuenta de Garmin.
+
+## Novedades de v0.2.0-alpha.1
+
+- Corregido el cierre con error IQ al pulsar BACK: el temporizador ya puede invocar su callback.
+- Pantallas adaptadas al circulo de 208 x 208: medicion real del texto, margenes seguros y hasta tres lineas para los nombres.
+- El guardado FIT comprueba el resultado, conserva la sesion pendiente si falla y permite reintentar con START.
+- Al salir se intenta guardar el entrenamiento parcial con series realizadas; una sesion vacia se descarta.
+- Seis campos GymApp por ejercicio con nombre, series completadas, reps y peso usado. El peso queda fijo durante la sesion aunque se calcule una subida posterior.
+- Copia local del detalle del ultimo entrenamiento y aviso de ejercicios adicionales si una rutina supera los seis campos FIT.
+- 15 pruebas automatizadas del simulador, con grabacion FIT real y comprobacion de textos, limites, errores y reintentos.
+
+Mas detalle y limites en [CHANGELOG.md](CHANGELOG.md) y [los datos de GymApp](docs/GYMAPP-DATA.md).
 
 ## Que incluye
 
@@ -38,9 +104,9 @@ Limitaciones actuales:
 - START cuenta las repeticiones objetivo como realizadas; no hay entrada de repeticiones reales ni deteccion automatica.
 - El modo llamado «Semanal» sube el peso en la siguiente ejecucion si el esfuerzo es 1, 2 o 3. «Mensual» exige cuatro ejecuciones satisfactorias consecutivas. **No se calculan semanas ni meses de calendario.** Un esfuerzo de 4 o 5 mantiene el peso y reinicia ese contador.
 - El volumen es la suma de `peso × repeticiones` de las series completadas. «Peso total» y «Volumen sesion» representan actualmente la misma magnitud.
-- FIT incluye un resumen de sesion y el ultimo ejercicio; no un historial detallado de cada ejercicio ni las tablas nativas de fuerza de Garmin.
+- La version incluye [campos GymApp por ejercicio](docs/GYMAPP-DATA.md): hasta seis ejercicios con sus series completadas, reps y peso de esa sesion. Son campos personalizados; no rellenan la tabla nativa «Ejercicios». Su presentacion en Garmin Connect sigue pendiente de confirmar.
 - Los pesos se asocian a la posicion del ejercicio. Reordenar o sustituir rutinas puede recuperar pesos del ejercicio anterior: revisalos antes de entrenar.
-- El guardado al abandonar un entrenamiento incompleto, los nombres largos y las entradas malformadas requieren mas pruebas y mejoras.
+- El guardado parcial, el detalle de ejercicios y los reintentos se han probado en simulador; necesitan mas validacion en relojes reales. Las entradas malformadas requieren mas validacion.
 - El icono es un placeholder.
 
 ## Abrir y compilar

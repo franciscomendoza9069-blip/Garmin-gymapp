@@ -4,6 +4,7 @@ project.manifest = manifest.xml
 # no necesitamos variantes por dispositivo.
 base.sourcePath = source
 base.resourcePath = resources
+base.excludeAnnotations = testSupport
 
 # La carpeta resources-round-208x208 se deja creada como referencia,
 # pero no se declara aqui porque la app no necesita recursos especificos.
